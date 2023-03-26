@@ -1,8 +1,11 @@
 from django.urls import include, path
+from .views import AdViewSet
+from rest_framework_nested import routers
+from .views import AdViewSet
 
-# TODO настройка роутов для модели
-
+ad_router = routers.SimpleRouter()
+ad_router.register("ads", AdViewSet, basename="ads")
 
 urlpatterns = [
-
+    path('', include(ad_router.urls))
 ]
